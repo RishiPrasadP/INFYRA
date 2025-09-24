@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pirate Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard">
+  <h1>🏴‍☠️ Welcome, <span id="dashTeam"></span>!</h1>
+  <h2>From <span id="dashCollege"></span></h2>
+
+  <div class="harbor">
+   
+<div class="harbor">
+  <img src="sam.webp" alt="Harbor Map" class="harbor-map">
+
+  <!-- Pirate trail paths -->
+  <svg class="pirate-paths">
+    <path id="path1" d="M 120 160 Q 200 220 300 180" class="trail hidden"></path>
+    <path id="path2" d="M 300 180 Q 400 250 500 200" class="trail hidden"></path>
+    <path id="path3" d="M 500 200 Q 420 320 300 350" class="trail hidden"></path>
+    <path id="path4" d="M 300 350 Q 400 280 520 120" class="trail hidden"></path>
+  </svg>
+
+  <div class="ship-icon" id="shipIcon">🚢</div>
+
+  <a href="puzzle1.html" class="port" id="port1">🍹 Rum Shack <span class="status"></span></a>
+  <a href="puzzle2.html" class="port locked" id="port2">💣 Cannon Bay <span class="status"></span></a>
+  <a href="puzzle3.html" class="port locked" id="port3">🧜‍♀️ Mermaid’s Cove <span class="status"></span></a>
+  <a href="puzzle4.html" class="port locked" id="port4">💀 Skull Island <span class="status"></span></a>
+  <a href="puzzle5.html" class="port locked" id="port5">💰 Treasure Lagoon <span class="status"></span></a>
+</div>
+
+  
+
+  <p>⚓ Puzzles Completed: <span id="completedCount"></span>/5</p>
+  <button id="sailBtn">🚢 Set Sail to Adventure</button>
+</div>
+<div id="congratsScreen" class="hidden">
+  <div class="congrats-box">
+    <h1>🎉 Congratulations, Captain!</h1>
+    <p>You’ve conquered all ports and claimed the treasure 💰</p>
+    
+    <div class="pirate-speaker">
+      <img src="pirate.jpeg" alt="Captain Jack Sparrow" class="jack-img">
+      <div class="speech-bubble" id="jackSpeech">
+        Arrr, ye be the Kings of the Seas! 🍻
+      </div>
+    </div>
+
+    <div id="fireworks"></div>
+    <button onclick="goHome()">🏴‍☠️ Back to Dashboard</button>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+<script>
+
+</script>
+</body>
+</html>

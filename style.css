@@ -1,0 +1,507 @@
+body {
+    margin:0;
+    font-family:'Pirata One', cursive;
+    background:linear-gradient(#001f2f,#000);
+    color:#FFD700;
+    overflow:auto;
+  }
+  
+  .mute-btn{
+    position:fixed;top:10px;right:10px;z-index:999;
+    padding:8px 12px;font-size:1.2rem;background:#0008;color:#FFD700;
+    border:1px solid #FFD700;border-radius:8px;cursor:pointer;
+  }
+  
+  .login-container{
+    text-align:center;background:rgba(0,0,0,0.8);padding:30px;border:2px solid #FFD700;border-radius:15px;width:320px;margin:8% auto;
+  }
+  
+  .login-container input{
+    display:block;width:90%;padding:12px;margin:10px auto;background:#111;border:1px solid #FFD700;color:#FFD700;border-radius:5px;font-size:1.1rem;
+  }
+  
+  .login-container button{
+    background:#FFD700;color:#000;padding:12px 20px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;
+  }
+  
+  .map-container header{text-align:center;margin-top:20px;font-size:1.8rem;}
+  
+  .map{
+    position:relative;width:100%;height:80vh;
+  }
+  
+  .map-img{
+    width:100%;height:100%;object-fit:cover;filter:saturate(1.2) brightness(0.8);
+  }
+  
+  /* Ship */
+  .ship{
+    position:absolute;width:40px;height:40px;font-size:2rem;transition:all 2s ease;
+    transform:translate(10%,80%);
+  }
+  
+  /* Islands */
+  .island{
+    position:absolute;font-size:2rem;cursor:pointer;transition:transform 0.3s;
+  }
+  
+  .island.locked{
+    filter:grayscale(1);
+    cursor:not-allowed;
+  }
+  
+  .island:hover:not(.locked){
+    transform:scale(1.3) rotate(-10deg);
+  }
+  
+  /* Positions for islands */
+  .island1{top:70%;left:15%;}
+  .island2{top:55%;left:35%;}
+  .island3{top:40%;left:55%;}
+  .island4{top:30%;left:70%;}
+  .island5{top:20%;left:85%;}
+  
+  /* Treasure message */
+  .treasure{
+    text-align:center;font-size:2rem;margin-top:20px;animation:glow 1.5s infinite alternate;
+  }
+  
+  @keyframes glow{
+    from{text-shadow:0 0 5px #FFD700;}
+    to{text-shadow:0 0 20px #FFD700;}
+  }
+  body {
+    font-family: 'Pirata One', cursive;
+    background: linear-gradient(to bottom, #004466, #001a26);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .map-container {
+    position: relative;
+    padding: 20px;
+  }
+  
+  .map-img {
+    width: 90%;
+    border: 5px solid #d4af37;
+    border-radius: 15px;
+  }
+  
+  .ship {
+    transition: top 1.5s ease, left 1.5s ease;
+    font-size: 2rem;
+  }
+  .ship.sailing {
+    animation: bob 0.6s infinite alternate;
+  }
+  @keyframes bob {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
+  
+  .island {
+    cursor: pointer;
+    font-size: 2.5rem;
+    transition: transform 0.3s;
+  }
+  .island.glow {
+    animation: glow 1.2s infinite alternate;
+  }
+  @keyframes glow {
+    from { text-shadow: 0 0 5px gold; }
+    to { text-shadow: 0 0 15px orange; transform: scale(1.2); }
+  }
+  
+  .treasure {
+    font-size: 2rem;
+    margin-top: 20px;
+    animation: bounce 1s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .ocean {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    overflow: hidden;
+  }
+  .wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100%;
+    animation: wave 6s linear infinite;
+  }
+  .wave:nth-child(2){animation-delay: -3s;}
+  @keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .mute-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  .dashboard {
+    font-family: 'Pirata One', cursive;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(to bottom, #00334d, #00111a);
+    color: white;
+    min-height: 100vh;
+  }
+  .port {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
+  
+  
+  .ports {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .port {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid gold;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+  
+  #sailBtn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background: gold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  #sailBtn:hover {
+    transform: scale(1.1);
+    background: orange;
+  }
+  .harbor {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+  }
+  
+  .harbor-map {
+    width: 100%;
+    border: 4px solid gold;
+    border-radius: 12px;
+  }
+  
+  .port {
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid gold;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .port:hover {
+    transform: scale(1.1);
+  }
+  .port.completed {
+    background: rgba(0,128,0,0.7);
+  }
+  
+  /* Position each port manually (adjust these to match harbor-map.png) */
+  #port1 { top: 20%; left: 15%; }
+  #port2 { top: 45%; left: 70%; }
+  #port3 { top: 70%; left: 25%; }
+  #port4 { top: 55%; left: 50%; }
+  #port5 { top: 15%; left: 60%; }
+  .harbor {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+  }
+  
+  .harbor-map {
+    width: 100%;
+    border: 4px solid gold;
+    border-radius: 12px;
+  }
+  
+  .port {
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid gold;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .port:hover {
+    transform: scale(1.1);
+  }
+  .port.completed {
+    background: rgba(0,128,0,0.7);
+  }
+  
+  /* Position each port (adjust to fit your harbor-map.png) */
+  #port1 { top: 20%; left: 15%; }
+  #port2 { top: 45%; left: 70%; }
+  #port3 { top: 70%; left: 25%; }
+  #port4 { top: 55%; left: 50%; }
+  #port5 { top: 15%; left: 60%; }
+  
+  .ship-icon {
+    position: absolute;
+    font-size: 2rem;
+    transition: top 1s ease, left 1s ease;
+    animation: bob 1s infinite alternate;
+    display: none;
+  }
+  
+  @keyframes bob {
+    from { transform: translateY(0); }
+    to { transform: translateY(-8px); }
+  }
+  .ship-icon {
+    position: absolute;
+    font-size: 2rem;
+    transition: top 2s ease, left 2s ease;
+    animation: bob 1s infinite alternate;
+    display: none;
+  }
+  
+  @keyframes bob {
+    from { transform: translateY(0); }
+    to { transform: translateY(-8px); }
+  }
+/* Gold Coin Animation */
+.coin {
+    position: fixed;
+    top: -50px;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: fall 2s linear forwards;
+  }
+  @keyframes fall {
+    to { top: 100vh; transform: rotate(360deg); }
+  }
+  
+  /* Pirate Narrator Bubble */
+  .pirate-bubble {
+    background: rgba(0,0,0,0.7);
+    border: 2px solid gold;
+    border-radius: 12px;
+    padding: 10px 15px;
+    display: inline-block;
+    max-width: 300px;
+    animation: fadeIn 0.8s ease;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
+  .rain {
+ /* Rain streaks */
+.rain {
+    position: fixed;
+    width: 2px; height: 15px;
+    background: rgba(173,216,230,0.6);
+    animation: fallRain 0.7s linear infinite;
+    top: 0;
+  }
+  @keyframes fallRain {
+    from { transform: translateY(-20vh); }
+    to { transform: translateY(100vh); }
+  }
+  
+  /* Lightning flash */
+  .lightning {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: white;
+    opacity: 0;
+    animation: flash 0.3s ease;
+  }
+  @keyframes flash {
+    0% { opacity: 0; }
+    30% { opacity: 0.8; }
+    100% { opacity: 0; }
+  }
+  
+  /* Clouds */
+  .cloud {
+    position: fixed;
+    top: 10%; left: -200px;
+    font-size: 3rem;
+    animation: drift 60s linear infinite;
+  }
+  @keyframes drift {
+    from { left: -200px; }
+    to { left: 120%; }
+  }
+  .chest {
+    font-size: 4rem;
+    transform: scale(0.8);
+    transition: transform 1s;
+  }
+  .chest.open {
+    transform: scale(1.2) rotate(-10deg);
+  }
+  .loot {
+    position: fixed;
+    top: 50%;
+    font-size: 2rem;
+    animation: lootFall 1.5s linear forwards;
+  }
+  @keyframes lootFall {
+    to { transform: translateY(100vh) rotate(360deg); opacity:0; }
+  }
+  .port.completed .mascot { display:inline-block; margin-left:5px; }
+  .mascot { animation: bobMascot 1s infinite alternate; }
+  @keyframes bobMascot { from{transform:translateY(0);} to{transform:translateY(-6px);} }
+  
+  #port2 .mascot { animation: shake 0.6s infinite; }
+  @keyframes shake {
+    0%{transform:rotate(0);}25%{transform:rotate(10deg);}
+    50%{transform:rotate(-10deg);}100%{transform:rotate(0);}
+  }
+  #port4 .mascot { animation: glowRed 1s infinite alternate; }
+  @keyframes glowRed {
+    from{text-shadow:0 0 5px red;}
+    to{text-shadow:0 0 20px crimson;}
+  }
+  #port5 .mascot { animation: sparkle 1s infinite alternate; }
+  @keyframes sparkle {
+    from{opacity:0.6;}to{opacity:1;}
+  }
+  .port.locked {
+    pointer-events: none;   /* disables clicking */
+    filter: grayscale(1);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .hidden { display: none; }
+
+  #congratsScreen {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: gold;
+  }
+  
+  .congrats-box {
+    text-align: center;
+    padding: 30px;
+    border: 3px solid gold;
+    border-radius: 15px;
+    background: rgba(20,20,20,0.8);
+    animation: popIn 1s ease;
+  }
+  
+  @keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .firework {
+    position: fixed;
+    bottom: 0;
+    width: 5px; height: 20px;
+    background: gold;
+    animation: shoot 1s ease forwards;
+  }
+  @keyframes shoot {
+    0% { bottom: 0; opacity: 1; }
+    80% { bottom: 80vh; opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .pirate-speaker {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .jack-img {
+    width: 120px;
+    border-radius: 12px;
+    border: 2px solid gold;
+    animation: floatJack 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes floatJack {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
+  
+  .speech-bubble {
+    max-width: 250px;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 2px solid gold;
+    font-size: 1rem;
+    position: relative;
+    animation: popIn 1s ease;
+  }
+  
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent rgba(255,255,255,0.9) transparent transparent;
+  }
+  .pirate-paths {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; /* not clickable */
+  }
+  
+  .trail {
+    fill: none;
+    stroke: gold;
+    stroke-width: 3;
+    stroke-dasharray: 6 6;  /* dotted */
+    opacity: 0;
+  }
+  
+  .trail.show {
+    opacity: 1;
+    stroke-dasharray: 6 6;
+    stroke-dashoffset: 200;
+    animation: dash 2s linear forwards;
+  }
+  
+  @keyframes dash {
+    to { stroke-dashoffset: 0; }
+  }
+  
